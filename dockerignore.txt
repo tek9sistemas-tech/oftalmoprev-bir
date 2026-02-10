@@ -17,4 +17,4 @@ EXPOSE 8000
 # Comando para iniciar a aplicação
 # Exemplo para script simples: CMD ["python", "main.py"]
 # Exemplo para Flask/Gunicorn:
-CMD ["python", "app.py"]
+CMD ["python", "BIR.py"]
