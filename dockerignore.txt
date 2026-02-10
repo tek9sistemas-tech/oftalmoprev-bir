@@ -1,9 +1,20 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.db
-.env
-.venv/
-venv/
-.git/
+# Usa uma imagem leve do Python
+FROM python:3.9-slim
+
+# Define o diretório de trabalho dentro do container
+WORKDIR /app
+
+# Copia os arquivos de requisitos e instala as dependências
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o restante do código da aplicação
+COPY . .
+
+# Expõe a porta que sua aplicação usa (Ex: 8000 para Django/FastAPI ou 5000 para Flask)
+EXPOSE 8000
+
+# Comando para iniciar a aplicação
+# Exemplo para script simples: CMD ["python", "main.py"]
+# Exemplo para Flask/Gunicorn:
+CMD ["python", "app.py"]
